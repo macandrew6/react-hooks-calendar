@@ -1,5 +1,8 @@
 import React from 'react';
+import moment from 'moment';
 
 export default function Calendar() {
-  return <div>Start here</div>;
+  const value = moment();
+  const startDay = value.clone().startOf('month');
+  return <div>{startDay.format('MM/DD/YY')}</div>;
 }
