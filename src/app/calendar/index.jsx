@@ -15,17 +15,20 @@ export default function Calendar() {
 
   return (
     <div className='calendar'>
-      {calendar.map((week) => (
-        <div>
-          {week.map((day) => (
-            <div className='day' onClick={() => setValue(day)}>
-              <div className={dayStyles(day, value)}>
-                {day.format('D').toString()}
+      <div className='header'></div>
+      <div className='body'>
+        {calendar.map((week) => (
+          <div>
+            {week.map((day) => (
+              <div className='day' onClick={() => setValue(day)}>
+                <div className={dayStyles(day, value)}>
+                  {day.format('D').toString()}
+                </div>
               </div>
-            </div>
-          ))}
-        </div>
-      ))}
+            ))}
+          </div>
+        ))}
+      </div>
     </div>
   );
 }
