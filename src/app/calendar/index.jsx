@@ -2,26 +2,16 @@ import React, { useState, useEffect } from 'react';
 import moment from 'moment';
 import './styles.css';
 
+import buildCalendar from './build';
+
 export default function Calendar() {
   const [calendar, setCalendar] = useState([]);
   const [value, setValue] = useState(moment());
 
-  const startDay = value.clone().startOf('month').startOf('week');
-  const endDay = value.clone().endOf('month').endOf('week');
-
-  const day = startDay.clone().subtract(1, 'day');
   useEffect(() => {
-    const a = [];
-    while (day.isBefore(endDay, 'day')) {
-      a.push(
-        Array(7)
-          .fill(0)
-          .map(() => day.add(1, 'day').clone())
-      );
-    }
-
-    setCalendar(a);
+    setCalendar(buildCalendar(value));
   }, [value]);
+
   return (
     <div className='calendar'>
       {calendar.map((week) => (
