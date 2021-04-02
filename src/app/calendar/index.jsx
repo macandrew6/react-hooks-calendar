@@ -16,6 +16,11 @@ export default function Calendar({ value, onChange }) {
     <div className='calendar'>
       <Header value={value} setValue={onChange} />
       <div className='body'>
+        <div className='day-names'>
+          {['sun', 'm', 't', 'w', 'th', 'f', 'sat'].map((d) => (
+            <div className='week'>{d}</div>
+          ))}
+        </div>
         {calendar.map((week) => (
           <div>
             {week.map((day) => (
